@@ -21,8 +21,8 @@ public class EmployeeController {
 
     @GetMapping("/all")
     public ResponseEntity<List<Employee>> getAllEmployees () {
-        List<Employee> footballers = employeeService.getAllEmployee();
-        return new ResponseEntity<>(footballers, HttpStatus.OK);
+        List<Employee> employees = employeeService.getAllEmployee();
+        return new ResponseEntity<>(employees, HttpStatus.OK);
     }
     @GetMapping("/find/{id}")
     public ResponseEntity<Employee> getEmployeeById (@PathVariable("id") Integer id) {
