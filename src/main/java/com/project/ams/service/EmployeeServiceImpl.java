@@ -71,6 +71,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> getAllEmployee() {
         return employeeRepository.findAll();
     }
+
+    @Override
+    public List<Employee> getEmployeesByDepartment(String department) {
+        if (department != null) {
+            return employeeRepository.findAll(department);
+        }
+        return employeeRepository.findAll();
+    }
     @Override
     public void deleteEmployee(Integer employeeId) throws ResourceNotFoundException {
         if (employeeRepository.getById(employeeId).getId().equals(employeeId)){

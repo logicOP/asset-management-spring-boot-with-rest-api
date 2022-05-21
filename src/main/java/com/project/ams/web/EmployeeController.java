@@ -53,4 +53,10 @@ public class EmployeeController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @GetMapping("/list/{department}")
+    public ResponseEntity<List<Employee>> getEmployeeById (@PathVariable("department") String department) {
+        List<Employee> employees = employeeService.getEmployeesByDepartment(department);
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
 }

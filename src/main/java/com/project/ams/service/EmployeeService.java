@@ -16,4 +16,5 @@ public interface EmployeeService {
     Employee getASingleEmployee(Integer employeeId);
     List<Employee> getAllEmployee();
     Optional<Employee> changeDepartment(Integer employeeId, EmployeeRequest employeeRequest);
+    List<Employee> getEmployeesByDepartment(String department);
 }
