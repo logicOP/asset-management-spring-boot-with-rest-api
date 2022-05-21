@@ -48,6 +48,20 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
 
+
+    @Override
+    public Optional<Employee> changeDepartment(Integer employeeId, EmployeeRequest employeeRequest)  throws ResourceNotFoundException{
+        Optional<Employee> employee = employeeRepository.findById(employeeId);
+        if (employee.isEmpty()){
+            throw new ResourceNotFoundException("Employee", "id", employeeId);
+        }
+        else {
+            employee.get().setDepartment(employeeRequest.getDepartment());
+            employeeRepository.save(employee.get());
+        }
+        return employee;
+    }
+
     @Override
     public Employee getASingleEmployee(Integer employeeId) throws ResourceNotFoundException{
         return employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException("Employee", "id", employeeId));

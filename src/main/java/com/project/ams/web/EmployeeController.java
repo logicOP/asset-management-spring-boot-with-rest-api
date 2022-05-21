@@ -41,6 +41,12 @@ public class EmployeeController {
 
     }
 
+    @PutMapping("/change-department/{id}")
+    public Optional<Employee> changeDepartment(@PathVariable Integer id, @RequestBody EmployeeRequest employee) {
+        return employeeService.changeDepartment(id, employee);
+
+    }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteEmployee(@PathVariable("id") Integer id) {
         employeeService.deleteEmployee(id);
